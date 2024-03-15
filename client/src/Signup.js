@@ -8,16 +8,16 @@ export default function Signup() {
   const [name,setName]=useState('')
     const [pass,setPassword]=useState('')
     const [roll,setRoll]=useState('')
-console.log(name);
-console.log(roll)
+
     const history=useNavigate()
 
     let submit=async(e)=>{
         e.preventDefault()
-        
+        console.log(name);
+        console.log(roll);
         try{
             console.log("sending")
-            await axios.post("http://127.0.0.1:5000/signup",{name,pass,roll})
+            await axios.post("http://localhost:5000/signup",{name,pass,roll})
             .then(res =>{
               if(res.data==="exists"){
                 console.log("already exists")
@@ -47,13 +47,13 @@ console.log(roll)
                 <div className="row gy-2 overflow-hidden">
                 <div className="col-12">
                     <div className="form-floating mb-3">
-                      <input type="text" className="form-control" name="roll" id="email" placeholder="Senti" required onChange={(e)=>setRoll(e.target.value)} ></input>
+                      <input type="text" className="form-control" name="name" id="email" placeholder="Senti" required onChange={(e)=>setName(e.target.value)} ></input>
                       <label htmlFor="text" className="form-label">Name</label>
                     </div>
                   </div>
                   <div className="col-12">
                     <div className="form-floating mb-3">
-                      <input type="number" className="form-control" name="name" id="email" placeholder="Senti" required onChange={(e)=>setName(e.target.value)} maxLength={9}></input>
+                      <input type="number" className="form-control" name="roll" id="email" placeholder="Senti" required onChange={(e)=>setRoll(e.target.value)} maxLength={9}></input>
                       <label htmlFor="text" className="form-label">Roll no</label>
                     </div>
                   </div>

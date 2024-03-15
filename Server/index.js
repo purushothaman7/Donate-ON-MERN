@@ -4,30 +4,34 @@ const cors=require("cors")
 const path = require("path")
 const app = express()
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const { mongoConnect, User } = require("./mongo");
 
 
 const port = process.env.PORT || 5000
 app.use(cors())
 mongoConnect();
+app.use(express.json())
 
 app.get('/signup',(req,res)=>{
-    console.log("got")
-res.render('signup')
+    res.render('signup')
+});
+app.get('/login',(req,res)=>{    
+    res.render('login')
 });
 
 app.post('/login', async (req, res) => {
     console.log("senti1");
       // console.log( req.body.name);
-      const checking = await User.findOne({ roll: req.body.name })
+      const checking = await User.findOne({ roll: req.body.roll })
       // console.log(req.body.password);
       // console.log(checking.password);
       
       try {
           const result = await bcrypt.compare(req.body.password, checking.password);
           if (result) {
-              const token = jwt.sign({ roll: req.body.name }, "secret");
-              rollNumbers = req.body.name;
+              const token = jwt.sign({ roll: req.body.roll }, "secret");
+              rollNumbers = req.body.roll;
               
            
               res.json({ token });
@@ -51,19 +55,19 @@ app.post('/login', async (req, res) => {
 
 
   app.post('/signup', async (req, res) => {
-    console.log(req.body)
-  
+    
+  console.log(req.body.name)
     const hash = await bcrypt.hash(req.body.pass, 10)
-console.log(req.body.name);
+
     const data = new User({
-        roll: req.body.name,
+        roll: req.body.roll,
         password: hash,
-        name : req.body.roll
+        name : req.body.name
     })
-    studName=req.body.roll;
+    studName=req.body.name;
     
     try {
-        const checking = await User.findOne({ roll: req.body.name })
+        const checking = await User.findOne({ roll: req.body.roll })
         if (checking) {
             res.json("exists")
         }
@@ -88,5 +92,5 @@ console.log(req.body.name);
 
 
   app.listen(port, () => {
-    console.log("port connected  $port");
+    console.log("port connected ",port);
 })

@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 export default function Login() {
   const history=useNavigate()
-  const [name,setName]=useState("")
+  const [roll,setRoll]=useState("")
   const [password,setPassword]=useState("")
 
   let login=async(e)=>{
@@ -11,12 +11,13 @@ export default function Login() {
 
     try{
 
-      await axios.post("http://localhost:5000/login",{name,password})
+      await axios.post("http://localhost:5000/login",{roll,password})
       .then(res=>{
         if(res.data!="notexist"){
           const token = res.data.token;
           localStorage.setItem('token', token);
-          history('/home',{state:{id:name}})
+          console.log("loggedIn")
+          history('/home',{state:{id:roll}})
         }
         else if(res.data=="notexist"){
           console.log("Credentails dont match")
@@ -43,7 +44,7 @@ export default function Login() {
                 <div className="row gy-2 overflow-hidden">
                   <div className="col-12">
                     <div className="form-floating mb-3">
-                      <input type="number" className="form-control" name="name" id="email" placeholder="Senti" required onChange={(e)=>setName(e.target.value)}></input>
+                      <input type="number" className="form-control" name="roll" id="email" placeholder="Senti" required onChange={(e)=>setRoll(e.target.value)}></input>
                       <label htmlFor="text" className="form-label">Roll no</label>
                     </div>
                   </div>

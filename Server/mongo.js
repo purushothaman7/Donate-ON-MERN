@@ -1,7 +1,7 @@
 const mongoose=require("mongoose")
 
 const mongoConnect = async() => {
-    await mongoose.connect("mongodb://127.0.0.1:27017")
+    await mongoose.connect("mongodb://localhost:27017")
 .then(()=>{
     console.log('mongoose connected');
 })
