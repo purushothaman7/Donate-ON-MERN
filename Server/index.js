@@ -19,9 +19,13 @@ app.get('/signup',(req,res)=>{
 app.get('/login',(req,res)=>{    
     res.render('login')
 });
+app.get('/home',(req,res)=>{
+    res.render('home');
+})
+
 
 app.post('/login', async (req, res) => {
-    console.log("senti1");
+   
       // console.log( req.body.name);
       const checking = await User.findOne({ roll: req.body.roll })
       // console.log(req.body.password);
@@ -32,8 +36,6 @@ app.post('/login', async (req, res) => {
           if (result) {
               const token = jwt.sign({ roll: req.body.roll }, "secret");
               rollNumbers = req.body.roll;
-              
-           
               res.json({ token });
   
               // res.json(req.body.roll)

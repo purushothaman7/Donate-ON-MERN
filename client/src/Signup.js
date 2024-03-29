@@ -13,8 +13,7 @@ export default function Signup() {
 
     let submit=async(e)=>{
         e.preventDefault()
-        console.log(name);
-        console.log(roll);
+
         try{
             console.log("sending")
             await axios.post("http://localhost:5000/signup",{name,pass,roll})
