@@ -2,6 +2,7 @@ import React from 'react';
 import NavBar from './NavBar';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import Testimonial from './Testimonial';
+import Footer from './Footer';
 
 export default function Home() {
   return (
@@ -51,8 +52,8 @@ export default function Home() {
       <section class="why-donate">
   <div class="container">
     <h2>Our Objectives</h2>
-    <div class="row" style={{ background: '#165e6e', color: '#000000', padding: '20px', borderRadius:'12px' }}>
-      <div class="col-md-4">
+    <div class="row " style={{ background: '#165e6e', color: '#000000', padding: '20px', borderRadius:'12px' }}>
+      <div class="col-md-4 pb-4 pt-4">
         <div class="card" >
           <div class="card-body">
             <h5 class="card-title">Improve Lives</h5>
@@ -60,7 +61,8 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div class="col-md-4">
+      
+      <div class="col-md-4 pb-4 pt-4">
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Empower Communities</h5>
@@ -68,7 +70,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-4 pb-4 pt-4">
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Promote Sustainability</h5>
@@ -88,23 +90,8 @@ export default function Home() {
         </div>
       </section>
       <Testimonial />
-      <footer className="text-center my-5" style={{ background: '#343a40', color: '#fff', padding: '20px' }}>
-        <div className="container">
-          <div className="row">
-            <div className="col-md-6 offset-md-3">
-              <h2>Contact Us</h2>
-              <p>Address: REC,Chennai</p>
-              <p>Email: donateon@gmail.com</p>
-              <p>Phone: +91 9384710011</p>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-md-12">
-              <p>&copy; Sakthilakshmi M, Sai Prasad R, Purushothaman M <br></br> All Rights Reserved.</p>
-            </div>
-          </div>
-        </div>
-      </footer>
+    <Footer  />
+      
     </div>
     </>
   );

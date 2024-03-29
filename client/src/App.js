@@ -5,8 +5,11 @@ import Login from './Login';
 import Signup from './Signup';
 import Home from './Home' ;
 import NavBar from './NavBar';
+
 import '../node_modules/bootstrap/dist/css/bootstrap.css'
 import Testimonial from './Testimonial';
+import Donate from './Donate';
+import Footer from './Footer';
 
 function App() {
   return (
@@ -19,6 +22,8 @@ function App() {
  <Route path='/home' element={<Home />}></Route>
  <Route path='/nav' element={<NavBar />}></Route>
  <Route path='/test' element={<Testimonial />}></Route>
+ <Route path='/donate' element={<Donate/>}></Route>
+ <Route path='/footer' element={<Footer/>}></Route>
     </Routes>
   </BrowserRouter>
     </div>
